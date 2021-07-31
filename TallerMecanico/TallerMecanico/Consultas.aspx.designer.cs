@@ -10,7 +10,7 @@
 
 namespace TallerMecanico
 {
-    public partial class WebForm1
+    public partial class Consultas
     {
 
         /// <summary>
