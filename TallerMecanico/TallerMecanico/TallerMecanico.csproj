@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Consultas.aspx" />
     <Content Include="css\main.css" />
+    <Content Include="img\background.jpg" />
     <Content Include="js\global.js" />
     <Content Include="vendor\datepicker\daterangepicker.css" />
     <Content Include="vendor\datepicker\daterangepicker.js" />
