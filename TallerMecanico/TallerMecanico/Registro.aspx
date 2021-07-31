@@ -16,12 +16,17 @@
     <title></title>
 </head>
 <body>
-
+    
     <form id="form1" runat="server">
+
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
+
             <div class="card card-4">
                 <div class="card-body">
+                     <ul class="pager">
+        <a href="Consultas.aspx">Realizar consultas </a>
+        </ul>
             <h1>Registro</h1>
            <h2 class="title">Control de reparaciones de automóviles</h2>
               <h3>Informacion personal</h3>
