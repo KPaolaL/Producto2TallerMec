@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h1>Consultas</h1>
+            <h1>Consultas taller mecanico</h1>
 
         </div>
 
