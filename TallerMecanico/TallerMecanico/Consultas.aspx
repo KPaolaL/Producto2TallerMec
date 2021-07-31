@@ -13,17 +13,10 @@
         }
 
          body { background-color: lavender; }
-        
-        
-        .auto-style2 {}
+
         .auto-style3 {
             background-color: #FFCCFF;
         }
-        .auto-style4 {}
-        
-        
-        .auto-style5 {}
-        .auto-style6 {}
         
         
     </style>
