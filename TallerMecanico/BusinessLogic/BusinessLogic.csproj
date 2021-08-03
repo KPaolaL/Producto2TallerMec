@@ -34,7 +34,8 @@
     <Reference Include="DataAccess">
       <HintPath>..\DataAccess\bin\Debug\DataAccess.dll</HintPath>
     </Reference>
-    <Reference Include="EntityLayer">
+    <Reference Include="EntityLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\EntityLayer\bin\Debug\EntityLayer.dll</HintPath>
     </Reference>
     <Reference Include="System" />

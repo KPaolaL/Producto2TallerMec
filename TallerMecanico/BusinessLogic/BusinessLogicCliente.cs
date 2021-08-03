@@ -17,7 +17,7 @@ namespace BusinessLogic
         private ClassDataAccess objectoDeAcceso =
            new ClassDataAccess(@"Data Source=LAPTOP-SFMTQ4SG\SQLEXPRESS; Initial Catalog=MiTaller; Integrated Security = true;");
 
-        public Boolean InsertarCliente(EntityLayerCliente entidadClient, ref string mensajeSalida)
+        public Boolean InsertarCliente(EntityLayerClient entidadClient, ref string mensajeSalida)
         {
             SqlParameter[] parametros = new SqlParameter[5];
 
@@ -95,32 +95,37 @@ namespace BusinessLogic
 
             return salida;
         }
-
-        public List<EntityLayerCliente> ObtenerClientes(ref string msj_salida)
+        
+        //Devolver Clientes
+        public List<EntityLayerClient> ObtenerClientes(ref string msj_salida)
         {
-            SqlConnection conexion = null;
+            SqlConnection conex = null;
 
-            string query = "SELECT * FROM CLIENTE";
+            string query = "select * from Cliente";
 
-
-
-            conexion = objectoDeAcceso.AbrirConexion(ref msj_salida);
+            conex = objectoDeAcceso.AbrirConexion(ref msj_salida);
 
             SqlDataReader ObtenerDatos = null;
 
-            ObtenerDatos = objectoDeAcceso.ConsultarReader(query, conexion, ref msj_salida);
+            ObtenerDatos = objectoDeAcceso.ConsultarReader(query, conex, ref msj_salida);
 
-            List<EntityLayerCliente> lista = new List<EntityLayerCliente>();
+            List<EntityLayerClient> lista = new List<EntityLayerClient>();
 
 
             if (ObtenerDatos != null)
             {
                 while (ObtenerDatos.Read())
                 {
-                    lista.Add(new EntityLayerCliente
+                    lista.Add(new EntityLayerClient
                     {
                         id_cliente = (int)ObtenerDatos[0],
-                        nombre = (string)ObtenerDatos[1]
+                        nombre = (string)ObtenerDatos[1],
+                        apellidoMat = (string)ObtenerDatos[2],
+                        apellidoPat = (string)ObtenerDatos[3],
+                        celular = (string)ObtenerDatos[4],
+                        TelOficina = (string)ObtenerDatos[5],
+                        correoP = (string)ObtenerDatos[6],
+                        correoCorp = (string)ObtenerDatos[7]
 
                     });
                 }
@@ -129,12 +134,127 @@ namespace BusinessLogic
             {
                 lista = null;
             }
-            conexion.Close();
-            conexion.Dispose();
+            conex.Close();
+            conex.Dispose();
 
             return lista;
 
         }
+
+        //Insertar Autos.
+        public Boolean InsertarAutos(EntidadAuto nuevoAuto, ref string mensajeSalida)
+        {
+            SqlParameter[] param1 = new SqlParameter[6];
+            param1[0] = new SqlParameter
+            {
+                ParameterName = "idAut",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Input,
+                Value = nuevoAuto.id_Auto
+
+            };
+            param1[1] = new SqlParameter
+            {
+                ParameterName = "marca",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Input,
+                Value = nuevoAuto.F_marca
+
+            };
+            param1[2] = new SqlParameter
+            {
+                ParameterName = "Modelo",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 100,
+                Direction = ParameterDirection.Input,
+                Value = nuevoAuto.modelo
+
+            };
+            param1[3] = new SqlParameter
+            {
+                ParameterName = "anio",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 4,
+                Direction = ParameterDirection.Input,
+                Value = nuevoAuto.anio
+
+            };
+            param1[4] = new SqlParameter
+            {
+                ParameterName = "color",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 50,
+                Direction = ParameterDirection.Input,
+                Value = nuevoAuto.color
+
+            };
+            param1[5] = new SqlParameter
+            {
+                ParameterName = "placa",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 16,
+                Direction = ParameterDirection.Input,
+                Value = nuevoAuto.placas
+
+            };
+            param1[6] = new SqlParameter
+            {
+                ParameterName = "dueno",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Input,
+                Value = nuevoAuto.dueño
+
+            };
+
+            string sentenciaSql = "insert into Auto values(@idAut,@marca,@Modelo,@anio,@color,@placa,@dueno);";
+            Boolean salida = false;
+
+            salida = objectoDeAcceso.OperacionesSQLConParametros(sentenciaSql, objectoDeAcceso.AbrirConexion(ref mensajeSalida), ref mensajeSalida, param1);
+
+            return salida;
+        }
+        //Devolver Autos.
+        public List<EntityLayerClient> AutosID(ref string msj)
+        {
+            SqlConnection conextemp = null;
+            string query = "select * from Auto";
+
+            conextemp = objectoDeAcceso.AbrirConexion(ref msj);
+
+            SqlDataReader ObtenerDatos = null;
+            ObtenerDatos = objectoDeAcceso.ConsultarReader(query, conextemp, ref msj);
+
+            List<EntityLayerClient> listaSalida = new List<EntityLayerClient>();
+            if (ObtenerDatos != null)
+            {
+                while (ObtenerDatos.Read())
+                {
+                    listaSalida.Add(new EntityLayerClient
+                    {
+                        id_Auto = (int)ObtenerDatos[0],
+                        F_marca = (int)ObtenerDatos[1],
+                        modelo = (string)ObtenerDatos[2],
+                        anio = (string)ObtenerDatos[3],
+                        color = (string)ObtenerDatos[4],
+                        placas = (string)ObtenerDatos[5],
+                        dueño = (int)ObtenerDatos[6]
+
+                    }
+                     );
+                }
+
+            }
+            else
+            {
+                listaSalida = null;
+            }
+            conextemp.Close();
+            conextemp.Dispose();
+
+            return listaSalida;
+
+        }
+
 
 
     }

@@ -26,6 +26,10 @@
           <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div>
              <center> <h1>Consultas taller mecanico</h1> 
+                 <ul class="pager">
+                         <a href="RegistroCliente.aspx">Registrar clientes</a>
+                         <a href="Consultas.aspx">Realizar consultas </a>
+                 </ul>
             <div class="col-2">
             <div class="input-group">
                  <h2>Lista de autos del clientes</h2>
