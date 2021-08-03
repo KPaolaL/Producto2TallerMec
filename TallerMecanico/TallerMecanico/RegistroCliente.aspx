@@ -35,7 +35,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Nombre: </label>
-                                   <asp:TextBox ID="TextBox1" runat="server" OnTextChanged="TextBox1_TextChanged" BorderStyle="Solid"></asp:TextBox>
+                                   <asp:TextBox ID="TextBox1" runat="server"  BorderStyle="Solid"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="col-2">
@@ -60,7 +60,7 @@
                                    <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Telefono de oficina: </label>
-                                   <asp:TextBox ID="TextBox5" runat="server" type="text" OnTextChanged="TextBox5_TextChanged" BorderStyle="Solid"></asp:TextBox>
+                                   <asp:TextBox ID="TextBox5" runat="server" type="text" BorderStyle="Solid"></asp:TextBox>
                                 </div>
                             </div>
                                <div class="col-2">
