@@ -6,19 +6,8 @@ using System.Threading.Tasks;
 
 namespace EntityLayer
 {
-    public class EntityLayerArch
+    class EntidadAuto
     {
-
-        //cliente
-        public int id_cliente { set; get; }
-        public string nombre { get; set; }
-        public string apellidoPat { get; set; }
-        public string apellidoMat { get; set; }
-        public string celular { get; set; }
-        public string TelOficina { get; set; }
-        public string correoP { get; set; }
-        public string correoCorp { get; set; }
-
         //Auto
 
         public int id_Auto { get; set; }

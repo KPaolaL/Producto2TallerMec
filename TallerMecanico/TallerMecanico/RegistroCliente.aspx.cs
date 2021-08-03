@@ -11,27 +11,9 @@ namespace TallerMecanico
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            TextBox8.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            //TextBox8.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox8_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
+       
     }
 }

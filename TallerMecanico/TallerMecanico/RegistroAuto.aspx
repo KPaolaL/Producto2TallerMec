@@ -23,9 +23,8 @@
                 <div class="card-body">
                      <ul class="pager">
                          <a href="RegistroCliente.aspx">Registrar clientes</a>
-                         <a href="Consultas.aspx">Realizar consultas </a>
-        <a href="Consultas.aspx">Realizar consultas </a>
-        </ul>
+                         <a href="RegistroAuto.aspx">Registrar autos</a>
+                 </ul>
             <h1>Registro</h1>
            <h2 class="title">Control de reparaciones de automóviles</h2>
              <h3>Informacion de auto</h3>

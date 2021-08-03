@@ -17,7 +17,7 @@ namespace BusinessLogic
         private ClassDataAccess objectoDeAcceso =
            new ClassDataAccess(@"Data Source=LAPTOP-SFMTQ4SG\SQLEXPRESS; Initial Catalog=MiTaller; Integrated Security = true;");
 
-        public Boolean InsertarCliente(EntityLayerArch entidadClient, ref string mensajeSalida)
+        public Boolean InsertarCliente(EntityLayerClient entidadClient, ref string mensajeSalida)
         {
             SqlParameter[] parametros = new SqlParameter[5];
 
@@ -97,7 +97,7 @@ namespace BusinessLogic
         }
         
         //Devolver Clientes
-        public List<EntityLayerArch> ObtenerClientes(ref string msj_salida)
+        public List<EntityLayerClient> ObtenerClientes(ref string msj_salida)
         {
             SqlConnection conex = null;
 
@@ -109,14 +109,14 @@ namespace BusinessLogic
 
             ObtenerDatos = objectoDeAcceso.ConsultarReader(query, conex, ref msj_salida);
 
-            List<EntityLayerArch> lista = new List<EntityLayerArch>();
+            List<EntityLayerClient> lista = new List<EntityLayerClient>();
 
 
             if (ObtenerDatos != null)
             {
                 while (ObtenerDatos.Read())
                 {
-                    lista.Add(new EntityLayerArch
+                    lista.Add(new EntityLayerClient
                     {
                         id_cliente = (int)ObtenerDatos[0],
                         nombre = (string)ObtenerDatos[1],
@@ -142,7 +142,7 @@ namespace BusinessLogic
         }
 
         //Insertar Autos.
-        public Boolean InsertarAutos(EntityLayerArch nuevoAuto, ref string mensajeSalida)
+        public Boolean InsertarAutos(EntidadAuto nuevoAuto, ref string mensajeSalida)
         {
             SqlParameter[] param1 = new SqlParameter[6];
             param1[0] = new SqlParameter
@@ -214,7 +214,7 @@ namespace BusinessLogic
             return salida;
         }
         //Devolver Autos.
-        public List<EntityLayerArch> AutosID(ref string msj)
+        public List<EntityLayerClient> AutosID(ref string msj)
         {
             SqlConnection conextemp = null;
             string query = "select * from Auto";
@@ -224,12 +224,12 @@ namespace BusinessLogic
             SqlDataReader ObtenerDatos = null;
             ObtenerDatos = objectoDeAcceso.ConsultarReader(query, conextemp, ref msj);
 
-            List<EntityLayerArch> listaSalida = new List<EntityLayerArch>();
+            List<EntityLayerClient> listaSalida = new List<EntityLayerClient>();
             if (ObtenerDatos != null)
             {
                 while (ObtenerDatos.Read())
                 {
-                    listaSalida.Add(new EntityLayerArch
+                    listaSalida.Add(new EntityLayerClient
                     {
                         id_Auto = (int)ObtenerDatos[0],
                         F_marca = (int)ObtenerDatos[1],
