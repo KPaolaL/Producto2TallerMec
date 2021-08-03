@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class DataAccess
+    public class ClassDataAccess
     {
         private string cadConexion = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
 
-        public DataAccess(string cadenaBD)
+        public ClassDataAccess(string cadenaBD)
         {
             cadConexion = cadenaBD;
         }
