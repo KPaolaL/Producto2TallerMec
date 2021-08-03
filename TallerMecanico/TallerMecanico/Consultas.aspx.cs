@@ -13,5 +13,12 @@ namespace TallerMecanico
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+            GridView1.DataBind();
+
+        }
     }
 }

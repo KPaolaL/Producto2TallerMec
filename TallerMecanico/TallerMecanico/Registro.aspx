@@ -82,8 +82,9 @@
                                   <div class="col-2">
                                     <div class="input-group">
                                         <label class="label">Marca de vehiculo: </label>
-                                        <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"> </asp:DropDownList>  
-                                    </div>
+                                        <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"></asp:DropDownList>  
+                                  
+                                        </div>
                                    </div>
                                    <div class="col-2">
                                   <div class="input-group">
