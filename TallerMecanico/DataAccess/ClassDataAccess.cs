@@ -1,14 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Biblioteca
+namespace DataAccess
 {
-    public class DataAccess
+    public class ClassDataAccess
     {
         private string cadConexion = ConfigurationManager.ConnectionStrings["conexion"].ConnectionString;
 
-        public ClassAccesoSQL(string cadenaBD)
+        public ClassDataAccess(string cadenaBD)
         {
+            cadConexion = cadenaBD;
         }
 
         public SqlConnection AbrirConexion(ref string mensaje) // Metodo con parametros de referencia
@@ -90,7 +97,7 @@ namespace Biblioteca
                     contenedor = null;
                     mensaje = "Error!" + a.Message;
                 }
-                
+
             }
             return contenedor;
         }
@@ -165,7 +172,7 @@ namespace Biblioteca
             return salida;
         }
 
-       
+
         //Funcion que permite hacer modificaciones de forma generica (con parámetros)
         public Boolean OperacionesSQLConParametros(string sentenciaSQL, SqlConnection cnab,
             ref string mensaje, SqlParameter[] parametros)
