@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{475095AC-D0CC-4568-A70E-8C91FE181A55}</ProjectGuid>
+    <ProjectGuid>{08EECB60-559D-44A3-BC96-1445ACF0B78A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EntityLayer</RootNamespace>
@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntidadAuto.cs" />
+    <Compile Include="EntityLayerAuto.cs" />
     <Compile Include="EntityLayerClient.cs" />
+    <Compile Include="EntityLayerMarca.cs" />
+    <Compile Include="EntityLayerMecanico.cs" />
+    <Compile Include="EntityLayerReparacion.cs" />
+    <Compile Include="EntityLayerRevision.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

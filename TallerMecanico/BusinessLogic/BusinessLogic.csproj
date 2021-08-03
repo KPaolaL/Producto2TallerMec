@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E48588C6-DA25-4B89-B2A8-1496CA9DCD1F}</ProjectGuid>
+    <ProjectGuid>{586F6C4D-90D0-42AB-8900-3CB2C1563CF4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BusinessLogic</RootNamespace>
@@ -34,8 +34,7 @@
     <Reference Include="DataAccess">
       <HintPath>..\DataAccess\bin\Debug\DataAccess.dll</HintPath>
     </Reference>
-    <Reference Include="EntityLayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="EntityLayer">
       <HintPath>..\EntityLayer\bin\Debug\EntityLayer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -48,7 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogicCliente.cs" />
+    <Compile Include="BusinessLogicClient.cs" />
+    <Compile Include="BussinessLogicAuto.cs" />
+    <Compile Include="BussinessLogicMecanico.cs" />
+    <Compile Include="BussinessLogicReparacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

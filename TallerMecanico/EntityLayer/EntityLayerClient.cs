@@ -8,8 +8,6 @@ namespace EntityLayer
 {
     public class EntityLayerClient
     {
-
-        //cliente
         public int id_cliente { set; get; }
         public string nombre { get; set; }
         public string apellidoPat { get; set; }
@@ -18,7 +16,5 @@ namespace EntityLayer
         public string TelOficina { get; set; }
         public string correoP { get; set; }
         public string correoCorp { get; set; }
-
-      
     }
 }
