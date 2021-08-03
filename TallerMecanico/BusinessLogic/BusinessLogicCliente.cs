@@ -255,8 +255,305 @@ namespace BusinessLogic
 
         }
 
+        //MECANICO
+        //crear mecanico
+        public Boolean InsertarMecanico(EntityLayerMecanico entidadMecanico, ref string mensajeSalida)
+        {
+            SqlParameter[] parametros = new SqlParameter[5];
+
+            parametros[0] = new SqlParameter
+            {
+                ParameterName = "Nombre",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 90,
+                Direction = ParameterDirection.Input,
+                Value = entidadMecanico.nombre
+            };
+
+            parametros[1] = new SqlParameter
+            {
+                ParameterName = "App",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 90,
+                Direction = ParameterDirection.Input,
+                Value = entidadMecanico.apellidoPat
+            };
+
+            parametros[2] = new SqlParameter
+            {
+                ParameterName = "ApM",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 90,
+                Direction = ParameterDirection.Input,
+                Value = entidadMecanico.apellidoMat
+
+            };
+
+            parametros[3] = new SqlParameter
+            {
+                ParameterName = "Celular",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 20,
+                Direction = ParameterDirection.Input,
+                Value = entidadMecanico.celular
+            };
 
 
+            parametros[4] = new SqlParameter
+            {
+                ParameterName = "correo",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 150,
+                Direction = ParameterDirection.Input,
+                Value = entidadMecanico.correo
+            };
+
+
+
+            string sentencia = "insert into Mecanico values(@Nombre, @App, @Apm, @Celular, @correo) ";
+
+            Boolean salida = false;
+
+            salida = objectoDeAcceso.OperacionesSQLConParametros(sentencia, objectoDeAcceso.AbrirConexion(ref mensajeSalida), ref mensajeSalida, parametros);
+
+            return salida;
+        }
+
+        //Devolver Mecanicos.
+        public List<EntityLayerMecanico> MecanicoID(ref string msj)
+        {
+            SqlConnection conextemp = null;
+            string query = "select * from Mecanico";
+
+            conextemp = objectoDeAcceso.AbrirConexion(ref msj);
+
+            SqlDataReader ObtenerDatos = null;
+            ObtenerDatos = objectoDeAcceso.ConsultarReader(query, conextemp, ref msj);
+
+            List<EntityLayerMecanico> listaSalida = new List<EntityLayerMecanico>();
+            if (ObtenerDatos != null)
+            {
+                while (ObtenerDatos.Read())
+                {
+                    listaSalida.Add(new EntityLayerClient
+                    {
+                        id_Tecnico = (int)ObtenerDatos[0],
+                        Nombre = (string)ObtenerDatos[1],
+                        App = (string)ObtenerDatos[2],
+                        Apm = (string)ObtenerDatos[3],
+                        Celular = (string)ObtenerDatos[4],
+                        correo = (string)ObtenerDatos[5],
+                    }
+                     );
+                }
+
+            }
+            else
+            {
+                listaSalida = null;
+            }
+            conextemp.Close();
+            conextemp.Dispose();
+
+            return listaSalida;
+        }
+
+        //REVISAR
+        //Insertar
+        public Boolean InsertarRevision(EntityLayerRevision entidadRevision, ref string mensajeSalida)
+        {
+            SqlParameter[] parametros = new SqlParameter[5];
+
+            parametros[0] = new SqlParameter
+            {
+                ParameterName = "Entrada",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 90,
+                Direction = ParameterDirection.Input,
+                Value = entidadRevision.entrada
+            };
+
+            parametros[1] = new SqlParameter
+            {
+                ParameterName = "Falla",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 90,
+                Direction = ParameterDirection.Input,
+                Value = entidadRevision.falla
+            };
+
+            parametros[2] = new SqlParameter
+            {
+                ParameterName = "Diagnostico",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 90,
+                Direction = ParameterDirection.Input,
+                Value = entidadRevision.diagnostico
+
+            };
+
+            arametros[3] = new SqlParameter
+            {
+                ParameterName = "Authorizacion",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 90,
+                Direction = ParameterDirection.Input,
+                Value = entidadRevision.authorizacion
+
+            };
+
+            parametros[4] = new SqlParameter
+            {
+                ParameterName = "Auto",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Input,
+                Value = entidadRevision.auto
+            };
+
+            parametros[5] = new SqlParameter
+            {
+                ParameterName = "Mecanico",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Input,
+                Value = entidadRevision.mecanico
+            };
+
+            string sentencia = "insert into Revision values(@Entrada, @Falla, @Diagnostico, @Authorizacion, @Auto, @Mecanico) ";
+
+            Boolean salida = false;
+
+            salida = objectoDeAcceso.OperacionesSQLConParametros(sentencia, objectoDeAcceso.AbrirConexion(ref mensajeSalida), ref mensajeSalida, parametros);
+
+            return salida;
+        }
+
+        //Devolver lista de Revision
+        public List<EntityLayerRevision> RevisionID(ref string msj)
+        {
+            SqlConnection conextemp = null;
+            string query = "select * from Revision";
+
+            conextemp = objectoDeAcceso.AbrirConexion(ref msj);
+
+            SqlDataReader ObtenerDatos = null;
+            ObtenerDatos = objectoDeAcceso.ConsultarReader(query, conextemp, ref msj);
+
+            List<EntityLayerRevision> listaSalida = new List<EntityLayerRevision>();
+            if (ObtenerDatos != null)
+            {
+                while (ObtenerDatos.Read())
+                {
+                    listaSalida.Add(new EntityLayerClient
+                    {
+                        id_revision = (int)ObtenerDatos[0],
+                        entrada = (string)ObtenerDatos[1],
+                        falla = (string)ObtenerDatos[2],
+                        diagnostico = (string)ObtenerDatos[3],
+                        authorizacion = (string)ObtenerDatos[4],
+                        auto = (int)ObtenerDatos[5],
+                        mecanico = (int)ObtenerDatos[6]
+                    });
+                }
+
+            }
+            else
+            {
+                listaSalida = null;
+            }
+            conextemp.Close();
+            conextemp.Dispose();
+
+            return listaSalida;
+        }
+
+        //REPARACIÓN
+        //Insertar
+        public Boolean InsertarReparacion(EntityLayerReparacion entidadReparacion, ref string mensajeSalida)
+        {
+            SqlParameter[] parametros = new SqlParameter[5];
+
+            parametros[0] = new SqlParameter
+            {
+                ParameterName = "Detalles",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 90,
+                Direction = ParameterDirection.Input,
+                Value = entidadReparacion.detalles
+            };
+
+            parametros[1] = new SqlParameter
+            {
+                ParameterName = "Garantia",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 90,
+                Direction = ParameterDirection.Input,
+                Value = entidadReparacion.garantia
+            };
+
+            parametros[2] = new SqlParameter
+            {
+                ParameterName = "Salida",
+                SqlDbType = SqlDbType.VarChar,
+                Size = 90,
+                Direction = ParameterDirection.Input,
+                Value = entidadReparacion.salida
+
+            };
+
+            parametros[3] = new SqlParameter
+            {
+                ParameterName = "Revision",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Input,
+                Value = entidadReparacion.fk_revision
+            };
+
+            string sentencia = "insert into Reparacion values(@Detalles, @Garantia, @Salida, @Revision) ";
+
+            Boolean salida = false;
+
+            salida = objectoDeAcceso.OperacionesSQLConParametros(sentencia, objectoDeAcceso.AbrirConexion(ref mensajeSalida), ref mensajeSalida, parametros);
+
+            return salida;
+        }
+
+        //Devolver lista de reparaciones
+        public List<EntityLayerReparacion> ReparacionID(ref string msj)
+        {
+            SqlConnection conextemp = null;
+            string query = "select * from Reparacion";
+
+            conextemp = objectoDeAcceso.AbrirConexion(ref msj);
+
+            SqlDataReader ObtenerDatos = null;
+            ObtenerDatos = objectoDeAcceso.ConsultarReader(query, conextemp, ref msj);
+
+            List<EntityLayerReparacion> listaSalida = new List<EntityLayerReparacion>();
+            if (ObtenerDatos != null)
+            {
+                while (ObtenerDatos.Read())
+                {
+                    listaSalida.Add(new EntityLayerClient
+                    {
+                        id_reparacion = (int)ObtenerDatos[0],
+                        detalles = (string)ObtenerDatos[1],
+                        garantia = (string)ObtenerDatos[2],
+                        salida = (string)ObtenerDatos[3],
+                        fk_revision = (int)ObtenerDatos[4],
+                        correo = (string)ObtenerDatos[5]
+                    });
+                }
+
+            }
+            else
+            {
+                listaSalida = null;
+            }
+            conextemp.Close();
+            conextemp.Dispose();
+
+            return listaSalida;
+        }
     }
 }
    
